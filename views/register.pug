@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+  section#signUp
+    .container
+      .row
+        .col-sm-12.mt-5
+          h2.text-white.text-center
+            b Create your profile
+          p.lead.text-white.text-center Communicate, Share & Enjoy the colors of life.
+          form.mt-5(action='/register', method='post')
+            .form-row.justify-content-center
+              .col-md-4
+                label.text-white(for='email') Email
+                input#email.form-control.mb-4(type='email', placeholder='someone@domain.com',name="email")
+                label.text-white(for='password') Password
+                input#password.form-control.mb-4(type='password', placeholder='password',name="password")
+                label.text-white(for='confirmPassword') Confirm Password
+                input#confirmPassword.form-control.mb-5(type='password', placeholder='password',name="confirmPassword")
+                button.btn.btn-outline-light.btn-block.mb-5 Register
+  if fixed
+    footer.text-center.mt-5.fixed-bottom
+      p.lead
+        b ©Huzaifa Sajjad
+  else
+    footer.text-center.mt-5
+      p.lead
+        b ©Huzaifa Sajjad

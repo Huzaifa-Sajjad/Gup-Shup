@@ -1,0 +1,14 @@
+extends profileLayout
+
+block content
+  section#searchList
+    .container
+      .row
+        .col-sm-4.my-5.mx-auto
+          each u in user
+            .row.d-block
+              .card
+                .card-body
+                  img#thumbnail.rounded-circle.img-fluid.mr-3(src='../static/uploads/'+u.profilePicture, width='48px', ,height='48px')
+                  p.lead.mt-1
+                    a.nav-link.text-dark(href='/profile/user'+u._id) #{u.name}

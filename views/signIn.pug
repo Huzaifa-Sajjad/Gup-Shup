@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+  section#signIn
+    .container
+      .row
+        .col-sm-12.mt-5
+          h2.text-white.text-center
+            b Sign In to Catch Up.
+          form.my-5(action='/login', method='post')
+            .form-row.justify-content-center
+              .col-md-4
+                label.text-white(for='email') Email
+                input#email.form-control.mb-4(type='email', placeholder='someone@domain.com',name="email")
+                label.text-white(for='email') Password
+                input#passowrd.form-control.mb-4(type='password', placeholder='password',name="password")
+                button.btn.btn-outline-light.btn-block Sign In
+  if fixed
+    footer.text-center.mt-5.fixed-bottom
+      p.lead
+        b ©Huzaifa Sajjad
+  else
+    footer.text-center.mt-5
+      p.lead
+        b ©Huzaifa Sajjad

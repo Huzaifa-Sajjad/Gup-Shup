@@ -1,0 +1,52 @@
+*
+{
+  font-family: 'PT Sans', sans-serif;
+}
+.navbar-light
+{
+  box-shadow: 10px 10px 10px -10px;
+}
+header span
+{
+  color: #3498db;
+}
+a.navbar-brand
+{
+  font-size: 2em;
+}
+section#profile
+{
+  /*background-image: linear-gradient(to right,#2F80ED,#56CCF2);*/
+  background-color: #f3f3f3;
+}
+img#thumbnail{
+  float: left;
+}
+textarea {
+  width: 80%;
+  border: none;
+  outline:none;
+}
+.btn-outline-primary:hover {
+  background-color: inherit;
+  color:dodgerblue;
+}
+#commentArea
+{
+  display: none;
+}
+#likeButton:hover,#commentButton:hover{
+  color:cornflowerblue;
+}
+#sendCommentButton{
+  float:right;
+  margin-top: 5px;
+}
+a#link
+{
+  color:rgba(0,0,0,0.75);
+}
+section#searchList
+{
+  background-image: linear-gradient(to right,#2F80ED,#56CCF2);
+}

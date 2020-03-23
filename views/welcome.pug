@@ -1,0 +1,39 @@
+extends layout.pug
+
+block content
+  section#information
+    .container
+      .row
+        .col-sm-12.mt-5
+          h2.text-white.text-center
+            b Set up your profile
+          p.lead.text-center.text-white Let people now who you are.
+          form.mt-5(action='/welcome', method='post',enctype="multipart/form-data")
+            .form-row.justify-content-center
+              .col-md-4
+                img#profilePicture.rounded.mx-auto.d-block.mb-4(src='../static/media/avatar.jpg', width='96px', height='96px')
+                label.text-white(for='profilePicture') Select a profile picture
+                input#profilePicture.form-control-file.mb-3(type='file', name='profilePicture',required)
+                label.text-white(for='name') Name
+                input#name.form-control.mb-3(type='text', name='name',required)
+                label.text-white(for='description') Description
+                input#description.form-control.mb-3(type='text', name='description',required)
+                label.text-white(for='dob') Birth Date
+                input#dob.form-control.mb-3(type='date', name='dob',required)
+                label.text-white(for='city') City
+                input#city.form-control.mb-3(type='text', name='city',required)
+                label.text-white(for='country') Country
+                input#country.form-control.mb-3(type='text', name='country',required)
+                label.text-white(for='interest') Interest
+                input#interest.form-control.mb-3(type='text', name='interest',required)
+                label.text-white(for='status') Status
+                input#status.form-control.mb-3(type='text', name='status',required)
+                button.btn.btn-outline-light.btn-block.mb-4.mt-3(type="submit") Continue
+  if fixed
+    footer.text-center.mt-5.fixed-bottom
+      p.lead
+        b ©Huzaifa Sajjad
+  else
+    footer.text-center.mt-5
+      p.lead
+        b ©Huzaifa Sajjad

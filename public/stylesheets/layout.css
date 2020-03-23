@@ -1,0 +1,28 @@
+*
+{
+  font-family: 'PT Sans', sans-serif;
+}
+.navbar-light
+{
+  box-shadow: 10px 10px 10px -10px;
+}
+header span
+{
+  color: #3498db;
+}
+a.navbar-brand
+{
+  font-size: 2em;
+}
+section#signUp,section#signIn,section#information
+{
+  background-image: linear-gradient(to right,#2F80ED,#56CCF2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+footer
+{
+  color:#3498db;
+}

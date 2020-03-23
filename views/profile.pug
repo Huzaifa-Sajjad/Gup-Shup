@@ -1,0 +1,80 @@
+extends profileLayout.pug
+
+block content
+  section#profile
+    .container
+      .row
+        .col-sm-12.col-md-4
+          .row.bg-white.my-3.rounded.d-block
+            section#information.py-5.px-4
+              img.img-fluid.mx-auto.d-block.rounded(src="../static/uploads/"+vUser.profilePicture,width='150px', height='150px',alt="Your picture")
+              h5.my-4 #{vUser.name}
+              p.lead #{vUser.description}
+              p.lead Lives in #{vUser.city}, #{vUser.country}
+              p Date of Birth #{vUser.dob}
+              p.lead Status #{vUser.status}
+          .row.bg-white.my-3.rounded.d-block
+        .col-sm-12.col-md-7.ml-5
+          .row.bg-white.my-3.rounded.d-block
+            if currentUser == vUser._id
+              .card
+                .card-header
+                  | Create a Post
+                form(action=`/profile/user${user._id}/post`,method="post")
+                  .card-body
+                    img#thumbnail.rounded-circle.mr-3(src="../static/uploads/"+user.profilePicture,width='48px', height='48px')
+                    textarea#post.mt-2(name='post', placeholder='Whats on your mind?')
+                  .card-footer.text-muted.text-right
+                    button.btn.btn-outline-primary Share
+          if posts.length > 0
+            each post in posts
+              .row.bg-white.my-3.rounded.d-block
+                .card
+                  .card-header
+                    img#thumbnail.rounded-circle.mr-3(src="../static/uploads/"+vUser.profilePicture, alt='', width='48px', height='48px')
+                    .row
+                      p.mt-1
+                        | #{vUser.name}
+                        br
+                        a#link(href=`/profile/user${user._id}/post${post.id}`)
+                          small #{post.publishedAt}
+                      if currentUser == vUser._id    
+                        i#navbarDropdown.fas.fa-ellipsis-v.fa-x.ml-auto.mt-2.text-primary(class='class=', nav-link='', dropdown-toggle='', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        .dropdown-menu(aria-labelledby='navbarDropdown')
+                          //a.dropdown-item(href=`/profile/user${user._id}/post${post.id}/update`) Update
+                          a.dropdown-item(href=`/profile/user${user._id}/post${post.id}/delete`) Delete
+                          .dropdown-divider
+                  .card-body
+                    p.card-text #{post.text}
+                    .row
+                      span.mr-auto.mt-2.pl-2
+                        .btn-group.dropup
+                          p.dropdown-toggle(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Liked by #{post.likes}
+                          .dropdown-menu
+                            each liker in post.likedBy
+                              a.dropdown-item(href=`/profile/user${liker.likerId}`) #{liker.name}
+                      span.ml-auto.mt-2
+                        .btn-group.dropup
+                          p.dropdown-toggle(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')      #{post.comments.length} Comments
+                          .dropdown-menu
+                            each commenter in post.comments
+                              a.dropdown-item(href=`/profile/user${commenter.postedBy}`) #{commenter.name}
+                  .card-footer.text-muted
+                    .row
+                      a.text-dark(href=`/profile/user${user._id}/post${post.id}/like`)
+                        i#likeButton.far.fa-thumbs-up.fa-2x.px-2
+                      i#commentButton.far.fa-comment-alt.fa-2x.ml-auto.px-2
+                    #commentArea.row
+                      each commenter in post.comments
+                        img#thumbnail.rounded-circle.mr-3.mt-4.ml-3(src="../static/uploads/"+commenter.pic, alt='', width='48px', height='48px')
+                        textarea.mt-4(name='commentText', placeholder=commenter.text)
+                      form#commentForm(action=`/profile/user${user._id}/post${post.id}`,method="post")
+                        img#thumbnail.rounded-circle.mr-3.mt-4.ml-3(src="../static/uploads/"+user.profilePicture, alt='', width='48px', height='48px')
+                        textarea.mt-4(name='commentText', placeholder='Write a comment')
+                        button#sendCommentButton.btn.btn-outline-primary(type="submit") Comment
+          else
+            .row.bg-white.my-3.rounded.d-block
+              h3.py-4.px-4.text-center Share Something with your friends.
+
+
